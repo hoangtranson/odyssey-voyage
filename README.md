@@ -32,7 +32,8 @@ To run the client:
 The repo also includes a `final` folder, to show what your code should look like once you've finished the course. You can use it to check your work if you get stuck.
 
 Publish the subgraph schemas to Apollo Studio
-1. Run `rover config auth` to set the `APOLLO_KEY` value 
+
+1. Run `rover config auth` to set the `APOLLO_KEY` value
 1. Navigate to `final/subgraph-locations`.
 1. Run `rover subgraph publish <APOLLO_GRAPH_REF> --name locations --schema locations.graphql --routing-url http://localhost:4001`
 1. Navigate to `final/subgraph-reviews`.
@@ -100,7 +101,13 @@ To run the servers in the `final` folder:
 1. Submit a review for a location.
    ```graphql
    mutation submitReview {
-     submitReview(review: { comment: "Wow, such a great planet!", rating: 5, locationId: "1" }) {
+     submitReview(
+       review: {
+         comment: "Wow, such a great planet!"
+         rating: 5
+         locationId: "1"
+       }
+     ) {
        code
        success
        message
@@ -116,3 +123,40 @@ To run the servers in the `final` folder:
 ## Getting Help
 
 For any issues or problems concerning the course content, please refer to the [Odyssey topic in our community forums](https://community.apollographql.com/tags/c/help/6/odyssey).
+
+## Note
+
+publish subgraph with rover
+
+```
+rover subgraph publish <APOLLO_GRAPH_REF> \
+  --name <SUBGRAPH NAME> \
+  --schema <SCHEMA FILE PATH> \
+  --routing-url <ROUTING URL>
+```
+
+ex:
+
+```
+rover subgraph publish Odyssey-Voyage-4ummfp@current \
+  --name locations \
+  --schema ./subgraph-locations/locations.graphql \
+  --routing-url http://localhost:4001
+
+rover subgraph publish Odyssey-Voyage-4ummfp@current \
+  --name reviews \
+  --schema ./subgraph-reviews/reviews.graphql \
+  --routing-url http://localhost:4002
+```
+
+go to `router`
+
+```
+curl -sSL https://router.apollo.dev/download/nix/v1.46.0 | sh
+```
+
+running router
+
+```
+APOLLO_KEY=service:Odyssey-Voyage-4ummfp:hYZUS8cQQqKBD50laMoCTw APOLLO_GRAPH_REF=Odyssey-Voyage-4ummfp@current ./router
+```
