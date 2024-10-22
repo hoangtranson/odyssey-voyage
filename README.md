@@ -160,3 +160,9 @@ running router
 ```
 APOLLO_KEY=service:Odyssey-Voyage-4ummfp:hYZUS8cQQqKBD50laMoCTw APOLLO_GRAPH_REF=Odyssey-Voyage-4ummfp@current ./router
 ```
+
+cors
+
+```
+sudo APOLLO_KEY=service:Odyssey-Voyage-4ummfp:hYZUS8cQQqKBD50laMoCTw APOLLO_GRAPH_REF=Odyssey-Voyage-4ummfp@current ./router/router --config ./router/config.yaml
+```
